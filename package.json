@@ -1,0 +1,28 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run buildTailwind && npm run copyVue && npm run copyAxios && npm run copyFaStyle && npm run copyFaFont",
+    "buildTailwind": "npx tailwindcss build tailwind.css -o public/app/css/tailwind.css",
+    "copyTailwindUI": "@powershell copy 'node_modules/@tailwindcss/ui/dist/tailwind-ui.min.css' 'public/app/css/tailwind-ui.min.css' || cp 'node_modules/@tailwindcss/ui/dist/tailwind-ui.min.css' 'public/app/css/tailwind-ui.min.css'",
+    "copyVue": "@powershell copy 'node_modules/vue/dist/vue.js' 'public/app/js/vue.js' || cp 'node_modules/vue/dist/vue.js' 'public/app/js/vue.js'",
+    "copyAxios": "@powershell copy 'node_modules/axios/dist/axios.js' 'public/app/js/axios.js' || cp 'node_modules/axios/dist/axios.js' 'public/app/js/axios.js'",
+    "copyFaStyle": "@powershell copy 'node_modules/@fortawesome/fontawesome-free/css/all.css' 'public/app/css/fontawesome.css' || cp 'node_modules/@fortawesome/fontawesome-free/css/all.css' 'public/app/css/fontawesome.css'",
+    "copyFaFont": "@powershell copy 'node_modules/@fortawesome/fontawesome-free/webfonts/*' 'public/app/webfonts/' || cp node_modules/@fortawesome/fontawesome-free/webfonts/* public/app/webfonts/",
+    "serve": "live-server --open=public/",
+    "update": "rm package-lock.json && rm -rf node_modules public/app/css/tailwind-ui.min.css public/app/css/tailwind.css public/app/css/fontawesome.css public/app/js/axios.js public/app/webfonts/* public/app/js/vue.js && npm update --save-dev && npm update --save && npm install && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
+    "autoprefixer": "^10.1.0",
+    "axios": "^0.21.1",
+    "live-server": "^1.2.1",
+    "postcss": "^8.2.2",
+    "tailwindcss": "^2.0.2",
+    "vue": "^2.6.11"
+  }
+}

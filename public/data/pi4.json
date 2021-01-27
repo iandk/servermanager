@@ -1,0 +1,1 @@
+{"name":"pi4","hostname":"pi4.local","location":"Lab","tags":"docker, mc","ressources":"4Cores, 2GB RAM, 120GB SSD","provider":"Homelab","ips":"10.0.0.217, 2a02:8071:2bc5:f800:4aa8:9471:ea03:887f","price":"0","type":"Raspberry Pi 4","os":"Raspberry Pi OS","notes":"null"}
