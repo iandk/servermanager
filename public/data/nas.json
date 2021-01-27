@@ -1,1 +1,0 @@
-{"name":"nas","hostname":"nas.local","location":"Lab","tags":"nas","ressources":"4Cores, 2GB RAM, 250GB SSD, 8TB HDD","provider":"Homelab","ips":"10.0.0.219, 2a02:8071:2bc5:f800:4aa8:9471:ea03:887f","price":"0","type":"Raspberry Pi 4","os":"Raspberry Pi OS","notes":"null"}
