@@ -1,1 +1,0 @@
-{"name":"vault","hostname":"vault.local","location":"Lab","tags":"nas, jellyfin","ressources":"2Cores, 10GB RAM, 2x 8TB HDD","provider":"Homelab","ips":"10.0.0.223, 2a02:8071:2bc5:f800:211:32ff:fed8:fe97","price":"0","type":"Synology DS220+","os":"Synology DSM 6","notes":"vault"}
