@@ -104,36 +104,38 @@
                                 </div>
                             </td>
                             <td class="px-6 py-6 ">
-                                <div class="text-sm text-gray-500">
-                                    {{ host.tags }}
+                                <div class="text-sm text-gray-600">
+                                    <div v-for="tag in filterTags(host.tags)" class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-pink-100 text-pink-800 m-1">
+                                        {{ tag }}
+                                    </div>
                                 </div>
                             </td>
                             <td class="px-6 py-6">
-                                <div class="text-sm text-gray-500">{{ host.ressources }}</div>
+                                <div class="text-sm text-gray-600">{{ host.ressources }}</div>
                             </td>
                             <td class="px-6 py-6">
-                                <div class="text-sm text-gray-500">{{ host.location }}</div>
-                            </td>
-
-                            <td class="px-6 py-6">
-                                <div class="text-sm text-gray-500">{{ host.provider }}</div>
+                                <div class="text-sm text-gray-600">{{ host.location }}</div>
                             </td>
 
                             <td class="px-6 py-6">
-                                <div v-if="host.ips != 0" class="text-sm text-gray-500">{{ host.ips }}</div>
-                                <div v-else class="text-sm text-gray-500">-</div>
-                            </td>
-                            <td class="px-6 py-6">
-                                <div class="text-sm text-gray-500">{{ host.type }}</div>
+                                <div class="text-sm text-gray-600">{{ host.provider }}</div>
                             </td>
 
                             <td class="px-6 py-6">
-                                <div class="text-sm text-gray-500">{{ host.os }}</div>
+                                <div v-if="host.ips != 0" class="text-sm text-gray-600">{{ host.ips }}</div>
+                                <div v-else class="text-sm text-gray-600">-</div>
+                            </td>
+                            <td class="px-6 py-6">
+                                <div class="text-sm text-gray-600">{{ host.type }}</div>
                             </td>
 
                             <td class="px-6 py-6">
-                                <div v-if="host.price != 0" class="text-sm text-gray-500">{{ host.price }}€</div>
-                                <div v-else class="text-sm text-gray-500">-</div>
+                                <div class="text-sm text-gray-600">{{ host.os }}</div>
+                            </td>
+
+                            <td class="px-6 py-6">
+                                <div v-if="host.price != 0" class="text-sm text-gray-600">{{ host.price }}€</div>
+                                <div v-else class="text-sm text-gray-600">-</div>
                             </td>
                             <td class="px-6 py-6 whitespace-nowrap text-right text-sm font-medium">
                                 <button @click="editServer(host.name)">
