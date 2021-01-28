@@ -34,6 +34,9 @@ var app = new Vue({
       pendingStatus: true
     },
     methods: {
+      filterTags(value) {
+        return value.split(",");
+      },
       toggelDeleteModal(name) {
         this.modalOpen = !this.modalOpen
         this.deleteHostName = name
