@@ -124,12 +124,26 @@ var app = new Vue({
               this.getServer();
               this.addHostOpen = false;
               this.editHostOpen = false;
+              this.clearForm();
               // window.location.href = '/';
           })
           .catch(function (error) {
               console.log(error);
           });
         }
+      },
+      clearForm() {
+        this.name = null;
+        this.hostname = null;
+        this.location = null;
+        this.tags = null;
+        this.ressources = null;
+        this.provider = null;
+        this.type = null;
+        this.os = null;
+        this.ips = null;
+        this.price = null;
+        this.notes = null;
       }
     },
     computed: {
