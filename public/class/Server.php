@@ -135,7 +135,7 @@ class Server {
 
     function getStatus($name) {
         $ip =  $this->getValue($name, "hostname");
-        exec("/sbin/ping -W 2 -c 3 $ip", $output, $status);
+        exec("/usr/bin/ping -W 2 -c 3 $ip", $output, $status);
         if ($status == 0) {
             return true;
         }
