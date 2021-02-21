@@ -56,7 +56,7 @@ class Server {
         $listServer = [];
         if ($handle = opendir('data/')) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry != "." && $entry != "..") {    
+                if ($entry != "." && $entry != ".." && $entry != ".gitkeep") {    
                     // Remove .json ending
                     $name = str_replace(".json", "", $entry);
                     $newEntry = array(
