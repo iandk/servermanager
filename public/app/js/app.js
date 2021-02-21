@@ -35,6 +35,7 @@ var app = new Vue({
    },
    methods: {
      filterTags(value) {
+       value = value + "";
        return value.split(",");
      },
      toggelDeleteModal(name) {
