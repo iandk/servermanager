@@ -152,15 +152,15 @@ var app = new Vue({
        if(this.searchQuery) {
          return this.hosts.filter((host)=>{
            return this.searchQuery.toLowerCase().split(' ').every(v => 
-             host.name.toLowerCase().includes(v) || 
-             host.hostname.toLowerCase().includes(v) ||
-             host.tags.toLowerCase().includes(v) ||
-             host.ressources.toLowerCase().includes(v) ||
-             host.location.toLowerCase().includes(v) ||
-             host.provider.toLowerCase().includes(v) ||
-             host.ips.includes(v) ||
-             host.type.toLowerCase().includes(v) ||
-             host.os.toLowerCase().includes(v))
+             host.name.toString().toLowerCase().includes(v) || 
+             host.hostname.toString().toLowerCase().includes(v) ||
+             host.tags.toString().toLowerCase().includes(v) ||
+             host.ressources.toString().toLowerCase().includes(v) ||
+             host.location.toString().toLowerCase().includes(v) ||
+             host.provider.toString().toLowerCase().includes(v) ||
+             host.ips.toString().includes(v) ||
+             host.type.toString().toLowerCase().includes(v) ||
+             host.os.toString().toLowerCase().includes(v))
              //host.price.includes(v))
          })
        } 
