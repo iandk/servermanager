@@ -84,7 +84,7 @@
                                             <i class="fas fa-square fa-stack-2x"></i>
                                             <i class="fas fa-server fa-stack-1x fa-inverse"></i>
                                         </span>
-                                        <span v-else-if="hostStatus[host.name]" class="fa-stack text-green-400 text-lg">
+                                        <span v-else-if="hostStatus[host.id]" class="fa-stack text-green-400 text-lg">
                                             <i class="fas fa-square fa-stack-2x"></i>
                                             <i class="fas fa-server fa-stack-1x fa-inverse"></i>
                                         </span>
