@@ -34,7 +34,7 @@
                   <div class="py-2">
                     <label class="block text-sm font-medium text-gray-600 text-left">Description</label>
                     <div class="mt-1">
-                      <input disabled required v-model="name" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="web">
+                      <input required v-model="name" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="web">
                     </div>
                   </div>
                   <div class="py-2">
@@ -116,7 +116,7 @@
               <button @click="editHostOpen = !editHostOpen" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Cancel
               </button>
-              <button @click="addServer()" type="submit" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <button @click="addServer(id)" type="submit" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Save
               </button>
             </div>

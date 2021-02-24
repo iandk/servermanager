@@ -4,7 +4,7 @@ $server = new Server();
 
 
 
-if(isset($_POST["name"])) {
-    echo $server->getStatus($_POST["name"]);
+if(isset($_POST["id"])) {
+    echo $server->getStatus($_POST["id"]);
 }
 

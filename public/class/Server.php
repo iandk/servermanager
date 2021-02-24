@@ -16,9 +16,23 @@ class Server {
     private $price; 
     private $notes; 
 
+
     // Add new server 
-    function addServer($name, $hostname, $location, $tags, $ressources, $provider, $ips, $type, $os, $price, $notes) {
-        $this->id = uniqid();
+    function addServer($existingID, $name, $hostname, $location, $tags, $ressources, $provider, $ips, $type, $os, $price, $notes) {
+
+        // If the method is called with "existingID", then a existing host should get updated instead of creating a new one
+
+
+        // Generate a new unique ID if there was no ID given 
+        if(!$existingID) {
+            $this->id = uniqid();
+        } 
+        // No ID was given, therefore update the existing host
+        else {
+            $this->id = $existingID;
+        }
+
+
         $this->name = $name;
         $this->hostname = $hostname;
         $this->location = $location;
@@ -35,9 +49,8 @@ class Server {
         $this->writeToFile();
         return true;
     }
-
-    
-    
+   
+    // Write the host details to the file    
     function writeToFile() {
         $jsonData = array(
             "id" => $this->id,
@@ -54,14 +67,14 @@ class Server {
             "notes" => $this->notes
         );
         // Create new json file to store data
-        $file = fopen("data/" . $this->name . ".json", "w");
+        $file = fopen("data/" . $this->id . ".json", "w");
         fwrite($file, json_encode($jsonData));
     }
 
 
     // Delete the server with the given name
-    function deleteServer($name) {
-        $filename = "data/" . $name . ".json";
+    function deleteServer($id) {
+        $filename = "data/" . $id . ".json";
         if (file_exists($filename)) {
             unlink($filename);
             return true;
@@ -109,8 +122,8 @@ class Server {
         }
     }
 
-    function getValue($name, $value) {
-        $filename = "data/" . $name . ".json";
+    function getValue($id, $value) {
+        $filename = "data/" . $id . ".json";
         if(file_exists($filename)) {
             $file = fopen($filename, "r");
             $filecontent = json_decode(fread($file, filesize($filename)), true);
@@ -126,8 +139,8 @@ class Server {
         }
     }
 
-    function getValues($name) {
-        $filename = "data/" . $name . ".json";
+    function getValues($id) {
+        $filename = "data/" . $id . ".json";
         if(file_exists($filename)) {
             $file = file_get_contents($filename);
             return $file;
@@ -137,8 +150,8 @@ class Server {
         }
     }
 
-    function getStatus($name) {
-        $ip =  $this->getValue($name, "hostname");
+    function getStatus($id) {
+        $ip =  $this->getValue($id, "hostname");
         exec("/usr/bin/ping -W 2 -c 3 $ip", $output, $status);
         if ($status == 0) {
             return true;

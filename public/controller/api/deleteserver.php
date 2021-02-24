@@ -4,9 +4,9 @@ $server = new Server();
 
 
 
-if(isset($_POST["name"])) {
-    if($_POST["name"] ) {
-        echo $server->deleteServer($_POST["name"]);
+if(isset($_POST["id"])) {
+    if($_POST["id"] ) {
+        echo $server->deleteServer($_POST["id"]);
     }
 }
 

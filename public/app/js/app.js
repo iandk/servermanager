@@ -24,8 +24,8 @@ var app = new Vue({
      addHostOpen: false,
      editHostOpen: false,
      settingsOpen: false,
-     // Name of the account to be deleted
-     deleteHostName: null,
+     // ID of the account to be deleted
+     deleteHostID: null,
      // Search bar
      searchQuery: null,
      // 
@@ -39,13 +39,13 @@ var app = new Vue({
        value = value + "";
        return value.split(",");
      },
-     toggelDeleteModal(name) {
+     toggelDeleteModal(id) {
        this.modalOpen = !this.modalOpen
-       this.deleteHostName = name
+       this.deleteHostID = id
      },
      deleteServer() {
            var params = new URLSearchParams();
-           params.append('name', this.deleteHostName);
+           params.append('id', this.deleteHostID);
            axios.post('/api/deleteserver', params)
                .then(response =>{
                    this.getServer()
@@ -54,7 +54,7 @@ var app = new Vue({
                    console.log(error);
                });
        this.modalOpen = false
-       this.deleteHostName = null  
+       this.deleteHostID = null  
      },
      getServer() {
        axios
@@ -63,19 +63,19 @@ var app = new Vue({
          this.hosts = response.data
        ))
      },
-     getStatus(name) {
+     getStatus(id) {
        this.pendingStatus = false;
        this.hosts.forEach(host => {
          var params = new URLSearchParams();
-         params.append('name', host.name);
+         params.append('id', host.id);
          axios.post('/api/getstatus', params)
              .then(response =>{
                  if(response.data == 1) {
-                   this.hostStatus[host.name] = true;
+                   this.hostStatus[host.id] = true;
                    return true;
                  }
                  else {
-                   this.hostStatus[host.name] = false;
+                   this.hostStatus[host.id] = false;
                    return false;
                  }
              })
@@ -84,12 +84,12 @@ var app = new Vue({
              });
        });
      },
-     editServer(name) {
+     editServer(id) {
        this.editHostOpen = true;
        this.pendingEditResponse = true
 
        var params = new URLSearchParams();
-       params.append('name', name);
+       params.append('id', id);
        axios.post('/api/showsingle', params)
        .then(response => (
          this.editHost = response.data,
@@ -108,9 +108,13 @@ var app = new Vue({
          this.pendingEditResponse = false
          ))
      },
-     addServer() {
+     addServer(id) {
        if(this.name && this.hostname && this.location) {
          var params = new URLSearchParams();
+         // Only append the ID if it was given => edit existing server
+         if(id) {
+          params.append('id', id);           
+         }
          params.append('name', this.name);
          params.append('hostname', this.hostname);
          params.append('location', this.location);
@@ -127,7 +131,7 @@ var app = new Vue({
              this.getServer();
              this.addHostOpen = false;
              this.editHostOpen = false;
-             this.clearForm();
+             //this.clearForm();
              // window.location.href = '/';
          })
          .catch(function (error) {
