@@ -6,6 +6,7 @@ var app = new Vue({
      // Form values
      hosts: null,
      status: null,
+     id: null,
      name: null, 
      hostname: null,
      location: null,
@@ -92,6 +93,7 @@ var app = new Vue({
        axios.post('/api/showsingle', params)
        .then(response => (
          this.editHost = response.data,
+         this.id = response.data.id,
          this.name = response.data.name,
          this.hostname = this.editHost.hostname,
          this.location = this.editHost.location,
