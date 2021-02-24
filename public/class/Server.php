@@ -47,7 +47,7 @@ class Server {
         
         // Write data to json file
         $this->writeToFile();
-        return true;
+        return $this->id;
     }
    
     // Write the host details to the file    

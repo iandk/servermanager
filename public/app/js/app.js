@@ -131,8 +131,7 @@ var app = new Vue({
              this.getServer();
              this.addHostOpen = false;
              this.editHostOpen = false;
-             //this.clearForm();
-             // window.location.href = '/';
+             this.clearForm();
          })
          .catch(function (error) {
              console.log(error);
