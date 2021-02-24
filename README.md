@@ -4,7 +4,9 @@
 - Apache 2.4
 - Mod Rewrite 
 - PHP 7.4+
-
+- PHP exec enabled
+The ping method requires the exec function to be enabled. 
+Please keep in mind that the hostname of the host will be used to ping, not the IP(s).
 
 
 ## 2. Installation
