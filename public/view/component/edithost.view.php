@@ -25,6 +25,12 @@
               </div>
               <div v-if="!pendingEditResponse" class="mt-6 relative flex-1 px-4 sm:px-6">
                 <div class="container mx-auto max-w-lg bg-white rounded">
+                <div class="py-2">
+                    <label class="block text-sm font-medium text-gray-600 text-left">ID</label>
+                    <div class="mt-1">
+                      <input disabled required v-model="id" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="ID">
+                    </div>
+                  </div>
                   <div class="py-2">
                     <label class="block text-sm font-medium text-gray-600 text-left">Description</label>
                     <div class="mt-1">
