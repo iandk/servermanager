@@ -17,3 +17,6 @@ Since there is no authentification for the frontend and the API you should confi
 
 
 Also make sure you have mod rewrite enabled and the .htaccess is present.
+
+
+![](https://i.imgur.com/mRdAkg5.png)
