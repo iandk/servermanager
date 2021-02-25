@@ -7,7 +7,7 @@ var app = new Vue({
      hosts: null,
      status: null,
      id: null,
-     name: null, 
+     name: null,
      hostname: null,
      location: null,
      tags: null,
@@ -28,16 +28,27 @@ var app = new Vue({
      deleteHostID: null,
      // Search bar
      searchQuery: null,
-     // 
+     //
      pendingEditResponse: true,
      editHost: null,
      hostStatus: [],
      pendingStatus: true
    },
    methods: {
+     isUndefined(value) {
+       return value === 'undefined';
+     },
      filterTags(value) {
-       value = value + "";
-       return value.split(",");
+       if (this.isUndefined(value))
+         return null
+       else
+         return value.split(",");
+     },
+     orDefault(value) {
+       if (this.isUndefined(value))
+         return '-'
+       else
+         return value;
      },
      toggelDeleteModal(id) {
        this.modalOpen = !this.modalOpen
@@ -54,7 +65,7 @@ var app = new Vue({
                    console.log(error);
                });
        this.modalOpen = false
-       this.deleteHostID = null  
+       this.deleteHostID = null
      },
      getServer() {
        axios
@@ -113,7 +124,7 @@ var app = new Vue({
          var params = new URLSearchParams();
          // Only append the ID if it was given => edit existing server
          if(id) {
-          params.append('id', id);           
+          params.append('id', id);
          }
          params.append('name', this.name);
          params.append('hostname', this.hostname);
@@ -156,8 +167,8 @@ var app = new Vue({
      filteredHosts() {
        if(this.searchQuery) {
          return this.hosts.filter((host)=>{
-           return this.searchQuery.toLowerCase().split(' ').every(v => 
-             host.name.toString().toLowerCase().includes(v) || 
+           return this.searchQuery.toLowerCase().split(' ').every(v =>
+             host.name.toString().toLowerCase().includes(v) ||
              host.hostname.toString().toLowerCase().includes(v) ||
              host.tags.toString().toLowerCase().includes(v) ||
              host.ressources.toString().toLowerCase().includes(v) ||
@@ -168,7 +179,7 @@ var app = new Vue({
              host.os.toString().toLowerCase().includes(v))
              //host.price.includes(v))
          })
-       } 
+       }
        else {
          return this.hosts;
        }
@@ -176,8 +187,8 @@ var app = new Vue({
    },
    mounted () {
      this.getServer();
-     this.interval = setInterval(() => this.getServer(), 1000);   
+     this.interval = setInterval(() => this.getServer(), 1000);
      this.getStatus;
-     this.interval = setInterval(() => this.getStatus(), 10000);   
+     this.interval = setInterval(() => this.getStatus(), 10000);
    }
  })
