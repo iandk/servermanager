@@ -1,4 +1,3 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <transition
 enter-active-class="transform transition ease-out duration-300"
 enter-class="opacity-0"
