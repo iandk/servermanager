@@ -18,32 +18,30 @@ class Server {
 
 
     // Add new server 
-    function addServer($existingID, $name, $hostname, $location, $tags, $ressources, $provider, $ips, $type, $os, $price, $notes) {
+    function addServer() {
 
         // If the method is called with "existingID", then a existing host should get updated instead of creating a new one
-
-
         // Generate a new unique ID if there was no ID given 
-        if(!$existingID) {
+        if(!$_POST['id']) {
             $this->id = uniqid();
         } 
         // No ID was given, therefore update the existing host
         else {
-            $this->id = $existingID;
+            $this->id = $_POST['id'];
         }
 
 
-        $this->name = $name;
-        $this->hostname = $hostname;
-        $this->location = $location;
-        $this->tags = $tags;
-        $this->ressources = $ressources;
-        $this->provider = $provider;
-        $this->ips = $ips;
-        $this->type = $type;
-        $this->os = $os;
-        $this->price = $price;
-        $this->notes = $notes;
+        $this->name = $_POST['name'];
+        $this->hostname = $_POST['hostname'];
+        $this->location = $_POST['location'];
+        $this->tags = $_POST['tags'];
+        $this->ressources = $_POST['ressources'];
+        $this->provider = $_POST['provider'];
+        $this->ips = $_POST['ips'];
+        $this->type = $_POST['type'];
+        $this->os = $_POST['os'];
+        $this->price = $_POST['price'];
+        $this->notes = $_POST['notes'];
         
         // Write data to json file
         $this->writeToFile();
@@ -73,8 +71,8 @@ class Server {
 
 
     // Delete the server with the given name
-    function deleteServer($id) {
-        $filename = "data/" . $id . ".json";
+    function deleteServer() {
+        $filename = "data/" . $_POST['id'] . ".json";
         if (file_exists($filename)) {
             unlink($filename);
             return true;
@@ -123,6 +121,14 @@ class Server {
     }
 
     function getValue($id, $value) {
+        # Fallback if no vars are passed
+        if(!$id) {
+            $id = $_POST['id'];
+        }
+        if (!$value) {
+            $value = $_POST['value'];
+        }
+
         $filename = "data/" . $id . ".json";
         if(file_exists($filename)) {
             $file = fopen($filename, "r");
@@ -139,8 +145,8 @@ class Server {
         }
     }
 
-    function getValues($id) {
-        $filename = "data/" . $id . ".json";
+    function getValues() {
+        $filename = "data/" . $_POST['id'] . ".json";
         if(file_exists($filename)) {
             $file = file_get_contents($filename);
             return $file;
@@ -150,8 +156,9 @@ class Server {
         }
     }
 
-    function getStatus($id) {
-        $ip =  $this->getValue($id, "hostname");
+    function getStatus() {
+        $_POST['value'] = "hostname";
+        $ip =  $this->getValue($_POST['id'], $_POST['value']);
         exec("/usr/bin/ping -W 2 -c 3 $ip", $output, $status);
         if ($status == 0) {
             return true;
