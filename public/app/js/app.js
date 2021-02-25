@@ -86,9 +86,7 @@ var app = new Vue({
     },
     // Get hosts status (ICMP ping) for the given ID
     // This method is called when mounted and has an interval 
-    getStatus(id) {
-      // Set the status to pending which will set's the host color to blue
-      this.pendingStatus = false;
+    getStatus(id) {    
       this.hosts.forEach(host => {
         var params = new URLSearchParams();
         params.append('id', host.id);
@@ -105,6 +103,7 @@ var app = new Vue({
           .catch(function (error) {
             console.log(error);
           });
+          this.pendingStatus = false;
       });
     },
     // Check if the var is null and return an empty string
@@ -237,8 +236,8 @@ var app = new Vue({
   },
   mounted() {
     this.getServer();
-    this.interval = setInterval(() => this.getServer(), 1000);
     this.getStatus();
+    this.interval = setInterval(() => this.getServer(), 1000);
     this.interval = setInterval(() => this.getStatus(), 10000);
   }
 })
