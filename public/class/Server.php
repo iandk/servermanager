@@ -34,7 +34,7 @@ class Server {
         $this->tags = $_POST['tags'];
         $this->ressources = $_POST['ressources'];
         $this->provider = $_POST['provider'];
-        $this->ips = preg_split("/[\s,]+/", $_POST['ips']);
+        $this->ips = $this->storeIps($_POST['ips']);
         $this->type = $_POST['type'];
         $this->os = $_POST['os'];
         $this->price = $_POST['price'];
@@ -42,6 +42,19 @@ class Server {
         // Write data to json file
         $this->writeToFile();
         return $this->id;
+    }
+
+    // Prepare IP/ASN objects
+    function storeIps(string $ips): array {
+        $ip_list = preg_split("/[\s,]+/", $ips);
+        $result = [];
+        foreach ($ip_list as &$ip) {
+            array_push($result,array(
+                "ip" => $ip,
+                "asn" => $this->getAsnForIp($ip)
+            ));
+        }
+        return $result;
     }
    
     // Write the host details to the file    
@@ -102,7 +115,7 @@ class Server {
                         "provider" => $this->getValue($id, "provider"),
                         "type" => $this->getValue($id, "type"),
                         "os" => $this->getValue($id, "os"),
-                        "ips" => implode(", ", $this->getValue($id, "ips")),
+                        "ips" => $this->getValue($id, "ips"),
                         "price" => $this->getValue($id, "price"),
                         "notes" => $this->getValue($id, "notes"),
                     );
@@ -110,9 +123,9 @@ class Server {
                     array_push($listServer, $newEntry);
                 }
             }
-            return json_encode($listServer);
             closedir($handle);
         }
+        return json_encode($listServer);
     }
 
     function getValue($id, $value) {
@@ -161,5 +174,47 @@ class Server {
         else {
             return false;
         }
+    }
+
+    // Fetch ASN for an IP address
+    function getAsnForIp(string $ip): string {
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE)) {
+            $parts = explode('.',$ip);
+            $dnslookup = implode('.', array_reverse($parts)) . '.origin.asn.cymru.com.';
+        }
+            elseif (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 | FILTER_FLAG_NO_PRIV_RANGE)) {
+            $addr = inet_pton($ip);
+            $unpack = unpack('H*hex', $addr);
+            $hex = $unpack['hex'];
+            $dnslookup = implode('.', array_reverse(str_split($hex))) . '.origin6.asn.cymru.com.';
+        }
+
+        if (isset($dnslookup)) {
+            $record = dns_get_record($dnslookup, DNS_TXT);
+            if (isset($record['0']['txt'])) {
+                // example: 3356 | 4.0.0.0/9 | US | arin | 1992-12-01
+                $result = explode(" | ", $record['0']['txt']);
+                $asn_id = array_shift($result);
+                $asn_name = $this->getAsnName(intval($asn_id));
+                return $asn_id . " - " . $asn_name;
+            }
+        }
+
+        return "private IP";
+    }
+
+    // Fetch ASN description for an ASN id
+    public function getAsnName(int $asn): string {
+        //AS3356.asn.cymru.com
+        $dnslookup = 'AS' . $asn . '.asn.cymru.com.';
+        $record = dns_get_record($dnslookup, DNS_TXT);
+        if (isset($record['0']['txt'])) {
+            // example: 3356 | US | arin | 2000-03-10 | LEVEL3, US
+            $result = explode(" | ", $record['0']['txt']);
+            $name = end($result);
+            return $name;
+        }
+
+        return "n/a";
     }
 }
