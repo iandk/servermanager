@@ -34,7 +34,7 @@ class Server {
         $this->tags = $_POST['tags'];
         $this->ressources = $_POST['ressources'];
         $this->provider = $_POST['provider'];
-        $this->ips = $_POST['ips'];
+        $this->ips = preg_split("/[\s,]+/", $_POST['ips']);
         $this->type = $_POST['type'];
         $this->os = $_POST['os'];
         $this->price = $_POST['price'];
@@ -102,7 +102,7 @@ class Server {
                         "provider" => $this->getValue($id, "provider"),
                         "type" => $this->getValue($id, "type"),
                         "os" => $this->getValue($id, "os"),
-                        "ips" => $this->getValue($id, "ips"),
+                        "ips" => implode(", ", $this->getValue($id, "ips")),
                         "price" => $this->getValue($id, "price"),
                         "notes" => $this->getValue($id, "notes"),
                     );
