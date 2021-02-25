@@ -109,7 +109,7 @@ var app = new Vue({
          ))
      },
      addServer(id) {
-       if(this.name && this.hostname && this.location) {
+       if(this.name && this.hostname) {
          var params = new URLSearchParams();
          // Only append the ID if it was given => edit existing server
          if(id) {

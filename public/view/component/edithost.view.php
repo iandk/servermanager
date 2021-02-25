@@ -32,13 +32,13 @@
                     </div>
                   </div>
                   <div class="py-2">
-                    <label class="block text-sm font-medium text-gray-600 text-left">Description</label>
+                    <label class="block text-sm font-medium text-gray-600 text-left">Description *</label>
                     <div class="mt-1">
                       <input required v-model="name" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="web">
                     </div>
                   </div>
                   <div class="py-2">
-                    <label class="block text-sm font-medium text-gray-600 text-left">Hostname</label>
+                    <label class="block text-sm font-medium text-gray-600 text-left">Hostname *</label>
                     <div class="mt-1">
                       <input required v-model="hostname" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="web.mydomain.io">
                     </div>
@@ -46,44 +46,44 @@
                   <div class="py-2">
                     <label class="block text-sm font-medium text-gray-600 text-left">Location</label>
                     <div class="mt-1">
-                      <input required v-model="location" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="Frankfurt">
+                      <input v-model="location" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="Frankfurt">
                     </div>
                   </div>
                   <div class="py-2">
                     <label class="block text-sm font-medium text-gray-600 text-left">Tags</label>
                     <div class="mt-1">
-                      <input required v-model="tags" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="web, app, database">
+                      <input v-model="tags" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="web, app, database">
                     </div>
                   </div>
                   <div>
                     <div class="pt-8 pb-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">Ressources</label>
                       <div class="mt-1">
-                        <input required v-model="ressources" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="1vCore, 2GB RAM, 20GB NVMe">
+                        <input v-model="ressources" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="1vCore, 2GB RAM, 20GB NVMe">
                       </div>
                     </div>
                     <div class="py-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">Provider</label>
                       <div class="mt-1">
-                        <input required v-model="provider" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="Hetzner">
+                        <input v-model="provider" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="Hetzner">
                       </div>
                     </div>
                     <div class="py-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">Type</label>
                       <div class="mt-1">
-                        <input required v-model="type" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="LXC/ KVM/ Baremetal">
+                        <input v-model="type" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="LXC/ KVM/ Baremetal">
                       </div>
                     </div>
                     <div class="py-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">OS</label>
                       <div class="mt-1">
-                        <input required v-model="os" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="Debian 10">
+                        <input v-model="os" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="Debian 10">
                       </div>
                     </div>
                     <div class="py-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">IPs</label>
                       <div class="mt-1">
-                        <input required v-model="ips" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="10.0.0.1, fd00::1">
+                        <input v-model="ips" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="10.0.0.1, fd00::1">
                       </div>
                     </div>
                     <div class="py-2">
@@ -94,13 +94,13 @@
                             {{ currency }}
                           </span>
                         </div>
-                        <input required v-model="price" class="pl-7 pr-12 outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="10">
+                        <input v-model="price" class="pl-7 pr-12 outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="10">
                       </div>
                     </div>
                     <div class="py-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">Notes</label>
                       <div class="mt-1">
-                        <textarea required v-model="notes" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="....">
+                        <textarea v-model="notes" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="....">
                         </textarea>
                       </div>
                     </div>
