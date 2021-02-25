@@ -96,20 +96,20 @@ class Server {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry != "." && $entry != ".." && $entry != ".gitkeep") {    
                     // Remove .json ending
-                    $name = str_replace(".json", "", $entry);
+                    $id = str_replace(".json", "", $entry);
                     $newEntry = array(
-                        "id" => $this->getValue($name, "id"),
-                        "name" => $this->getValue($name, "name"),
-                        "hostname" => $this->getValue($name, "hostname"),
-                        "location" => $this->getValue($name, "location"),
-                        "tags" => $this->getValue($name, "tags"),
-                        "ressources" => $this->getValue($name, "ressources"),
-                        "provider" => $this->getValue($name, "provider"),
-                        "type" => $this->getValue($name, "type"),
-                        "os" => $this->getValue($name, "os"),
-                        "ips" => $this->getValue($name, "ips"),
-                        "price" => $this->getValue($name, "price"),
-                        "notes" => $this->getValue($name, "notes"),
+                        "id" => $this->getValue($id, "id"),
+                        "name" => $this->getValue($id, "name"),
+                        "hostname" => $this->getValue($id, "hostname"),
+                        "location" => $this->getValue($id, "location"),
+                        "tags" => $this->getValue($id, "tags"),
+                        "ressources" => $this->getValue($id, "ressources"),
+                        "provider" => $this->getValue($id, "provider"),
+                        "type" => $this->getValue($id, "type"),
+                        "os" => $this->getValue($id, "os"),
+                        "ips" => $this->getValue($id, "ips"),
+                        "price" => $this->getValue($id, "price"),
+                        "notes" => $this->getValue($id, "notes"),
                     );
                     // Add to array
                     array_push($listServer, $newEntry);
@@ -122,10 +122,10 @@ class Server {
 
     function getValue($id, $value) {
         # Fallback if no vars are passed
-        if(!$id) {
+        if(!isset($id)) {
             $id = $_POST['id'];
         }
-        if (!$value) {
+        if (!isset($value)) {
             $value = $_POST['value'];
         }
 
