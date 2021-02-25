@@ -84,30 +84,42 @@ var app = new Vue({
              });
        });
      },
+     // Check if the var is null and return an empty string
+     // This avoids "null" in the HTML input fields when editing a host
+     checkForValue(value) {
+       if(value == "null") {
+         return "";
+       }
+       else {
+         return value;
+       }
+     },
      editServer(id) {
        this.editHostOpen = true;
        this.pendingEditResponse = true
-
+       // Fetch the existing values
        var params = new URLSearchParams();
        params.append('id', id);
        axios.post('/api/showsingle', params)
        .then(response => (
          this.editHost = response.data,
-         this.id = response.data.id,
-         this.name = response.data.name,
+         this.id = this.editHost.id,
+         this.name = this.editHost.name,
          this.hostname = this.editHost.hostname,
-         this.location = this.editHost.location,
-         this.tags = this.editHost.tags,
-         this.ressources = this.editHost.ressources,
-         this.provider = this.editHost.provider,
-         this.type = this.editHost.type,
-         this.os = this.editHost.os,
-         this.ips = this.editHost.ips,
-         this.price = this.editHost.price,
-         this.notes = this.editHost.notes,
+        // Those vars might be null, so we have to check for the value
+         this.location = this.checkForValue(this.editHost.location),
+         this.tags = this.checkForValue(this.editHost.tags),
+         this.ressources = this.checkForValue(this.editHost.ressources),
+         this.provider = this.checkForValue(this.editHost.provider),
+         this.type = this.checkForValue(this.editHost.type),
+         this.os = this.checkForValue(this.editHost.os),
+         this.ips = this.checkForValue(this.editHost.ips),
+         this.price = this.checkForValue(this.editHost.price),
+         this.notes = this.checkForValue(this.editHost.notes),
          this.pendingEditResponse = false
          ))
      },
+
      addServer(id) {
        if(this.name && this.hostname) {
          var params = new URLSearchParams();
@@ -150,6 +162,9 @@ var app = new Vue({
        this.ips = null;
        this.price = null;
        this.notes = null;
+     },
+     notNull(value) {
+       return !value === "null" || ""
      }
    },
    computed: {
