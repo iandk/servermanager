@@ -5,7 +5,7 @@ var app = new Vue({
     currency: '€',
     billingTerm: 'month',
     // Form values
-    hosts: null,
+    hosts: [],
     status: null,
     id: null,
     name: null,
