@@ -48,10 +48,12 @@ var app = new Vue({
        }
      },
      orDefault(value) {
-       if (this.isUndefined(value))
-         return '-'
-       else
+       if (this.isUndefined(value)) {
+        return '-'
+       }
+       else {
          return value;
+       }
      },
      toggelDeleteModal(id) {
        this.modalOpen = !this.modalOpen
@@ -178,8 +180,8 @@ var app = new Vue({
      },
      // Reset and close form
      cancelForm(flag) {
-       this.clearForm()
-       return !flag
+       this.clearForm();
+       return !flag;
      },
      // Set form values to null
      clearForm() {
@@ -220,8 +222,8 @@ var app = new Vue({
    },
    mounted () {
      this.getServer();
+     this.getStatus();
      this.interval = setInterval(() => this.getServer(), 1000);
-     this.getStatus;
      this.interval = setInterval(() => this.getStatus(), 10000);
    }
  })
