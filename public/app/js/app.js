@@ -176,7 +176,12 @@ var app = new Vue({
      clearErrors() {
        this.errors = [];
      },
-    // Set form values to null after adding a host
+     // Reset and close form
+     cancelForm(flag) {
+       this.clearForm()
+       return !flag
+     },
+     // Set form values to null
      clearForm() {
        this.name = "";
        this.hostname = "";

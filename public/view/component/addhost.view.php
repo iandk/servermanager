@@ -1,5 +1,5 @@
 <transition enter-active-class="transform transition ease-out duration-300" enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="ease-in duration-200" leave-class="opacity-100" leave-to-class="opacity-0">
-  <div v-if="addHostOpen" class="fixed z-50 inset-0 overflow-hidden">
+  <div v-if="addHostOpen" @keydown.esc="addHostOpen = cancelForm(addHostOpen)" tabindex="-1" class="fixed z-50 inset-0 overflow-hidden">
     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
       <div class="absolute inset-0 bg-gray-900 opacity-95"></div>
     </div>
@@ -14,7 +14,7 @@
                     Add server
                   </h2>
                   <div class="ml-3 h-7 flex items-center">
-                    <button @click="addHostOpen = !addHostOpen" class="bg-blue-600 rounded-md text-white hover:text-blue-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button @click="addHostOpen = cancelForm(addHostOpen)" class="bg-blue-600 rounded-md text-white hover:text-blue-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                       <span class="sr-only">Close panel</span>
                       <!-- Heroicon name: x -->
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -132,7 +132,7 @@
               </div>
             </div>
             <div class="flex-shrink-0 px-4 py-4 flex justify-end">
-              <button @click="addHostOpen = !addHostOpen" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <button @click="addHostOpen = cancelForm(addHostOpen)" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Cancel
               </button>
               <button @click="addServer()" type="submit" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
