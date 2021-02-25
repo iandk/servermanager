@@ -144,7 +144,7 @@ var app = new Vue({
           this.provider = this.checkForValue(this.editHost.provider),
           this.type = this.checkForValue(this.editHost.type),
           this.os = this.checkForValue(this.editHost.os),
-          this.ips = this.checkForValue(this.editHost.ips),
+          this.ips = this.checkForValue(this.editHost.ips.map(x => x.ip).join(', ')),
           this.price = this.checkForValue(this.editHost.price),
           this.notes = this.checkForValue(this.editHost.notes),
           this.pendingEditResponse = false
