@@ -28,11 +28,12 @@ var app = new Vue({
      deleteHostID: null,
      // Search bar
      searchQuery: null,
-     //
+     // Misc
      pendingEditResponse: true,
      editHost: null,
      hostStatus: [],
-     pendingStatus: true
+     pendingStatus: true,
+     errors: []
    },
    methods: {
      isUndefined(value) {
@@ -132,49 +133,62 @@ var app = new Vue({
          this.pendingEditResponse = false
          ))
      },
-
      addServer(id) {
-       if(this.name && this.hostname) {
-         var params = new URLSearchParams();
-         // Only append the ID if it was given => edit existing server
-         if(id) {
-          params.append('id', id);
-         }
-         params.append('name', this.name);
-         params.append('hostname', this.hostname);
-         params.append('location', this.location);
-         params.append('tags', this.tags);
-         params.append('ressources', this.ressources);
-         params.append('provider', this.provider);
-         params.append('type', this.type);
-         params.append('os', this.os);
-         params.append('ips', this.ips);
-         params.append('price', this.price);
-         params.append('notes', this.notes);
-         axios.post('/api/addserver', params)
-         .then(response =>{
-             this.getServer();
-             this.addHostOpen = false;
-             this.editHostOpen = false;
-             this.clearForm();
-         })
-         .catch(function (error) {
-             console.log(error);
-         });
+       // Throw error if mandatory fields are empty
+       if (!this.name || this.name == "" || !this.hostname || this.hostname == "") {
+        this.throwError("Please fill out all required fields");
+        return;
        }
+
+       var params = new URLSearchParams();
+       // Only append the ID if it was given => edit existing server
+       if(id) {
+        params.append('id', id);
+       }
+       params.append('name', this.name);
+       params.append('hostname', this.hostname);
+       params.append('location', this.location);
+       params.append('tags', this.tags);
+       params.append('ressources', this.ressources);
+       params.append('provider', this.provider);
+       params.append('type', this.type);
+       params.append('os', this.os);
+       params.append('ips', this.ips);
+       params.append('price', this.price);
+       params.append('notes', this.notes);
+       axios.post('/api/addserver', params)
+       .then(response =>{
+           this.getServer();
+           this.addHostOpen = false;
+           this.editHostOpen = false;
+           this.clearForm();
+           this.clearErrors();
+       })
+       .catch(function (error) {
+           console.log(error);
+       });
+
      },
+     throwError(message) {
+       // Add error if it doesnt exist yet
+       if (this.errors.indexOf(message) === -1) this.errors.push(message);
+     },
+     clearErrors() {
+       this.errors = [];
+     },
+    // Set form values to null after adding a host
      clearForm() {
-       this.name = null;
-       this.hostname = null;
-       this.location = null;
-       this.tags = null;
-       this.ressources = null;
-       this.provider = null;
-       this.type = null;
-       this.os = null;
-       this.ips = null;
-       this.price = null;
-       this.notes = null;
+       this.name = "";
+       this.hostname = "";
+       this.location = "";
+       this.tags = "";
+       this.ressources = "";
+       this.provider = "";
+       this.type = "";
+       this.os = "";
+       this.ips = "";
+       this.price = "";
+       this.notes = "";
      }
    },
    computed: {
