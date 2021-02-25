@@ -36,13 +36,15 @@ var app = new Vue({
    },
    methods: {
      isUndefined(value) {
-       return value === 'undefined';
+       return value === 'undefined' || value === 'null' || !value;
      },
      filterTags(value) {
-       if (this.isUndefined(value))
-         return null
-       else
-         return value.split(",");
+       if (this.isUndefined(value)) {
+          return null
+       }
+       else {
+         return value.toString().split(",");
+       }
      },
      orDefault(value) {
        if (this.isUndefined(value))
@@ -173,9 +175,6 @@ var app = new Vue({
        this.ips = null;
        this.price = null;
        this.notes = null;
-     },
-     notNull(value) {
-       return !value === "null" || ""
      }
    },
    computed: {
