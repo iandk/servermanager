@@ -1,6 +1,7 @@
 var app = new Vue({
   el: '#app',
   data: {
+    // Custom config
     currency: '€',
     billingTerm: 'month',
     // Form values
@@ -26,7 +27,7 @@ var app = new Vue({
     settingsOpen: false,
     // ID of the account to be deleted
     deleteHostID: null,
-    // Search bar
+    // Search query 
     searchQuery: null,
     // Misc
     pendingEditResponse: true,
@@ -36,9 +37,11 @@ var app = new Vue({
     errors: []
   },
   methods: {
+    // Check if value is undefined, null or not set
     isUndefined(value) {
       return value === 'undefined' || value === 'null' || !value;
     },
+    // Split the tag array after each ","
     filterTags(value) {
       if (this.isUndefined(value)) {
         return null
@@ -46,6 +49,7 @@ var app = new Vue({
         return value.toString().split(",");
       }
     },
+    // Return default value("-") when a value is undefined
     orDefault(value) {
       if (this.isUndefined(value)) {
         return '-';
@@ -53,10 +57,12 @@ var app = new Vue({
         return value;
       }
     },
+    // Toggle the modal and set deleteHostID to the given ID
     toggelDeleteModal(id) {
-      this.modalOpen = !this.modalOpen
-      this.deleteHostID = id
+      this.modalOpen = !this.modalOpen;
+      this.deleteHostID = id;
     },
+    // Delete server by the ID 
     deleteServer() {
       var params = new URLSearchParams();
       params.append('id', this.deleteHostID);
@@ -67,9 +73,10 @@ var app = new Vue({
         .catch(function (error) {
           console.log(error);
         });
-      this.modalOpen = false
-      this.deleteHostID = null
+      this.modalOpen = false;
+      this.deleteHostID = null;
     },
+    // Get all servers and assign the objects to the hosts array
     getServer() {
       axios
         .get('/api/listserver')
@@ -77,7 +84,10 @@ var app = new Vue({
           this.hosts = response.data
         ))
     },
+    // Get hosts status (ICMP ping) for the given ID
+    // This method is called when mounted and has an interval 
     getStatus(id) {
+      // Set the status to pending which will set's the host color to blue
       this.pendingStatus = false;
       this.hosts.forEach(host => {
         var params = new URLSearchParams();
@@ -106,6 +116,11 @@ var app = new Vue({
         return value;
       }
     },
+
+    // Edit an existing server
+    // - Open UI Sidebar
+    // - Set response to pending while waiting
+    // - Fetch the existing host data
     editServer(id) {
       this.editHostOpen = true;
       this.pendingEditResponse = true
@@ -131,13 +146,16 @@ var app = new Vue({
           this.pendingEditResponse = false
         ))
     },
+    // Add/ edit existing server
+    // This method will add or edit an host depending on whether an id is passed.
+    // No ID? => Add new server
+    // Passed ID? => Edit existing and keep the ID+
     addServer(id) {
       // Throw error if mandatory fields are empty
       if (!this.name || this.name == "" || !this.hostname || this.hostname == "") {
         this.throwError("Please fill out all required fields");
         return;
       }
-
       var params = new URLSearchParams();
       // Only append the ID if it was given => edit existing server
       if (id) {
@@ -167,10 +185,11 @@ var app = new Vue({
         });
 
     },
+    // Add error message to the errors array if the message doesnt exist yet
     throwError(message) {
-      // Add error if it doesnt exist yet
       if (this.errors.indexOf(message) === -1) this.errors.push(message);
     },
+    // Remove all existing errors
     clearErrors() {
       this.errors = [];
     },
@@ -179,7 +198,7 @@ var app = new Vue({
       this.clearForm();
       return !flag;
     },
-    // Set form values to null
+    // Clear form
     clearForm() {
       this.name = "";
       this.hostname = "";
@@ -195,6 +214,7 @@ var app = new Vue({
     }
   },
   computed: {
+    // Only return hosts that match the search query
     filteredHosts() {
       if (this.searchQuery) {
         return this.hosts.filter((host) => {

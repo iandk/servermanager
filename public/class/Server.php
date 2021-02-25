@@ -157,8 +157,7 @@ class Server {
     }
 
     function getStatus() {
-        $_POST['value'] = "hostname";
-        $ip =  $this->getValue($_POST['id'], $_POST['value']);
+        $ip = $this->getValue($_POST['id'], "hostname");
         exec("/usr/bin/ping -W 2 -c 3 $ip", $output, $status);
         if ($status == 0) {
             return true;
