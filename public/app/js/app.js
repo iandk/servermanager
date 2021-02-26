@@ -7,6 +7,8 @@ var app = new Vue({
     // Set this to true if you don't want to see the pricing input and table view
     // This is useful when used internally and you don't need to specifiy the price for hosts
     disablePricing: false,
+    // Title of the application
+    title: 'My hosts',
     // Form values
     hosts: [],
     status: null,
@@ -247,5 +249,6 @@ var app = new Vue({
     this.getStatus();
     this.interval = setInterval(() => this.getServer(), 1000);
     this.interval = setInterval(() => this.getStatus(), 10000);
+    document.title = this.title;
   }
 })
