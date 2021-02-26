@@ -58,7 +58,8 @@ class Server {
             "price" => $this->price,
             "type" => $this->type,
             "os" => $this->os,    
-            "notes" => $this->notes
+            "notes" => $this->notes,
+            "status" => "false"
         );
         // Create new json file to store data
         $file = fopen("data/" . $this->id . ".json", "w");
