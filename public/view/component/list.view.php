@@ -67,7 +67,7 @@
                             <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                 OS
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th v-if="!disablePricing" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                 Price per {{ billingTerm }}
                             </th>
                             <th scope="col" class="relative px-6 py-3">
@@ -135,7 +135,7 @@
                                 <div class="text-sm text-gray-600">{{ orDefault(host.os) }}</div>
                             </td>
 
-                            <td class="px-6 py-6">
+                            <td v-if="!disablePricing" class="px-6 py-6">
                                 <div v-if="!isUndefined(host.price)" class="text-sm text-gray-600">{{ host.price }}{{ currency }}</div>
                                 <div v-else class="text-sm text-gray-600">-</div>
                             </td>

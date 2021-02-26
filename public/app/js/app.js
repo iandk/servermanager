@@ -4,6 +4,9 @@ var app = new Vue({
     // Custom config
     currency: '€',
     billingTerm: 'month',
+    // Set this to true if you don't want to see the pricing input and table view
+    // This is useful when used internally and you don't need to specifiy the price for hosts
+    disablePricing: false,
     // Form values
     hosts: [],
     status: null,

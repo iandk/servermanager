@@ -114,7 +114,7 @@
                         <input v-model="ips" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="10.0.0.1, fd00::1">
                       </div>
                     </div>
-                    <div class="py-2">
+                    <div v-if="!disablePricing" class="py-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">Price per {{ billingTerm }}</label>
                       <div class="mt-1 relative rounded-md shadow-sm">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
