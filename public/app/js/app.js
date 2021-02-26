@@ -70,9 +70,12 @@ var app = new Vue({
       this.modalOpen = !this.modalOpen;
       this.deleteHostID = id;
     },
+    // Switch sort direction
     sort(s) {
       if(s === this.currentSort) {
         this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.currentSortDir = 'asc';
       }
       this.currentSort = s;
     },
@@ -278,6 +281,15 @@ var app = new Vue({
           return a < b ? 1 : -1;
         }
       });
+    },
+    // Display small triangle to mark sort direction
+    displaySortDirection() {
+      switch (this.currentSortDir) {
+        case "asc":
+          return "▲";
+        case "desc":
+          return "▼";
+      }
     }
   },
   mounted() {

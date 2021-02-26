@@ -44,38 +44,37 @@
                     <thead class="bg-gray-200">
                         <tr>
                             <th @click="sort('name')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Name
+                                Name<span v-if="currentSort === 'name'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                 Tags
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Ressources
+                                Resources
                             </th>
                             <th @click="sort('location')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Location
+                                Location<span v-if="currentSort === 'location'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th @click="sort('provider')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Provider
+                                Provider<span v-if="currentSort === 'provider'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                 IPs
                             </th>
                             <th @click="sort('type')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Type
+                                Type<span v-if="currentSort === 'type'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th @click="sort('os')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                OS
+                                OS<span v-if="currentSort === 'os'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th @click="sort('price')" v-if="!disablePricing" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Price per {{ billingTerm }}
+                                Price per {{ billingTerm }}<span v-if="currentSort === 'price'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
                         </tr>
                     </thead>
-                    debug: sort={{currentSort}}, dir={{currentSortDir}}
                     <tbody class="bg-white divide-y divide-gray-200">
                         <tr v-for="host in filteredHosts" class="hover:bg-gray-50">
                             <td class="px-6 py-8 whitespace-nowrap">
