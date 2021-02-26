@@ -25,6 +25,34 @@
               </div>
               <div v-if="!pendingEditResponse" class="mt-6 relative flex-1 px-4 sm:px-6">
                 <div class="container mx-auto max-w-lg bg-white rounded">
+                  <!-- ERRORS -->
+                  <div v-for="error in errors" class="mt-1 mb-4">
+                    <div class="rounded-md bg-red-50 p-4">
+                      <div class="flex">
+                        <div class="flex-shrink-0">
+                          <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                          </svg>
+                        </div>
+                        <div class="ml-3">
+                          <p class="text-sm font-medium text-red-800">
+                            {{ error }}
+                          </p>
+                        </div>
+                        <div class="ml-auto pl-3">
+                          <div class="-mx-1.5 -my-1.5">
+                            <button @click="clearErrors" class="inline-flex bg-red-50 rounded-md p-1.5 text-red-500 hover:bg-red-100 focus:outline-none">
+                              <span class="sr-only">Dismiss</span>
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END -->
                   <div class="py-2">
                     <label class="block text-sm font-medium text-gray-600 text-left">ID</label>
                     <div class="mt-1">

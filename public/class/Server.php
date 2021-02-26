@@ -19,7 +19,6 @@ class Server {
 
     // Add new server 
     function addServer() {
-
         // If the method is called with "existingID", then a existing host should get updated instead of creating a new one
         // Generate a new unique ID if there was no ID given 
         if(!$_POST['id']) {
@@ -29,8 +28,6 @@ class Server {
         else {
             $this->id = $_POST['id'];
         }
-
-
         $this->name = $_POST['name'];
         $this->hostname = $_POST['hostname'];
         $this->location = $_POST['location'];
@@ -42,7 +39,6 @@ class Server {
         $this->os = $_POST['os'];
         $this->price = $_POST['price'];
         $this->notes = $_POST['notes'];
-        
         // Write data to json file
         $this->writeToFile();
         return $this->id;
@@ -68,7 +64,6 @@ class Server {
         $file = fopen("data/" . $this->id . ".json", "w");
         fwrite($file, json_encode($jsonData));
     }
-
 
     // Delete the server with the given name
     function deleteServer() {

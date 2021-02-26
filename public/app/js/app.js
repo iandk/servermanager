@@ -132,7 +132,7 @@ var app = new Vue({
           this.id = this.editHost.id,
           this.name = this.editHost.name,
           this.hostname = this.editHost.hostname,
-          // Those vars might be null, so we have to check for the value
+          // Those vars might be null, so we have to check for their value
           this.location = this.checkForValue(this.editHost.location),
           this.tags = this.checkForValue(this.editHost.tags),
           this.ressources = this.checkForValue(this.editHost.ressources),
@@ -153,6 +153,11 @@ var app = new Vue({
       // Throw error if mandatory fields are empty
       if (!this.name || this.name == "" || !this.hostname || this.hostname == "") {
         this.throwError("Please fill out all required fields");
+        return;
+      }
+      // Throw error if price is not numeric
+      if (isNaN(this.price)) {
+        this.throwError("The price only allowes numbers!");
         return;
       }
       var params = new URLSearchParams();
