@@ -34,6 +34,9 @@ var app = new Vue({
     deleteHostID: null,
     // Search query 
     searchQuery: null,
+    // Sorting the list view
+    currentSort: null,
+    currentSortDir: null,
     // Misc
     pendingEditResponse: true,
     editHost: null,
@@ -66,6 +69,15 @@ var app = new Vue({
     toggelDeleteModal(id) {
       this.modalOpen = !this.modalOpen;
       this.deleteHostID = id;
+    },
+    // Switch sort direction
+    sort(s) {
+      if(s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.currentSortDir = 'asc';
+      }
+      this.currentSort = s;
     },
     // Delete server by the ID 
     deleteServer() {
@@ -120,7 +132,6 @@ var app = new Vue({
         return value;
       }
     },
-
     // Edit an existing server
     // - Open UI Sidebar
     // - Set response to pending while waiting
@@ -223,10 +234,12 @@ var app = new Vue({
     }
   },
   computed: {
-    // Only return hosts that match the search query
+    // List hosts
+    // Only return hosts that match the search query if any
+    // Sort them if a field to sort by is selected
     filteredHosts() {
       if (this.searchQuery) {
-        return this.hosts.filter((host) => {
+        hostlist = this.hosts.filter((host) => {
           return this.searchQuery.toLowerCase().split(' ').every(v =>
             host.name.toString().toLowerCase().includes(v) ||
             host.hostname.toString().toLowerCase().includes(v) ||
@@ -240,7 +253,42 @@ var app = new Vue({
           //host.price.includes(v))
         })
       } else {
-        return this.hosts;
+        hostlist = this.hosts;
+      }
+      if (this.currentSort === null) {
+        return hostlist;
+      }
+      return hostlist.sort((a, b) => {
+        a = a[this.currentSort];
+        b = b[this.currentSort];
+        // equal items sort equally
+        if (a === b) {
+          return 0;
+        }
+        // nulls sort after anything else
+        else if (this.isUndefined(a)) {
+          return 1;
+        }
+        else if (this.isUndefined(b)) {
+          return -1;
+        }
+        // otherwise, if we're ascending, lowest sorts first
+        else if (this.currentSortDir === 'asc') {
+          return a < b ? -1 : 1;
+        }
+        // if descending, highest sorts first
+        else {
+          return a < b ? 1 : -1;
+        }
+      });
+    },
+    // Display small triangle to mark sort direction
+    displaySortDirection() {
+      switch (this.currentSortDir) {
+        case "asc":
+          return "▲";
+        case "desc":
+          return "▼";
       }
     }
   },
