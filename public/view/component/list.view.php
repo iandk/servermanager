@@ -95,10 +95,10 @@
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-md font-bold text-indigo-500">
-                                            {{ host.name }}
+                                            <a :href="'https://' + host.hostname + '/'" target="_blank">{{ host.name }}</a>
                                         </div>
                                         <div class="text-sm font-medium text-gray-600">
-                                            {{ host.hostname }}
+                                            <a :href="'https://' + host.hostname + '/'" target="_blank">{{ host.hostname }}</a>
                                         </div>
                                     </div>
                                 </div>
