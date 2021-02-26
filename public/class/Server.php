@@ -121,7 +121,8 @@ class Server {
     }
 
     function getValue($id, $value) {
-        # Fallback if no vars are passed
+        
+        # Fallback to $_POST if no vars are passed
         if(!isset($id)) {
             $id = $_POST['id'];
         }

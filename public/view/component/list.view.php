@@ -136,7 +136,7 @@
                             </td>
 
                             <td class="px-6 py-6">
-                                <div v-if="!isUndefined(host.price)" class="text-sm text-gray-600">{{ host.price }} €</div>
+                                <div v-if="!isUndefined(host.price)" class="text-sm text-gray-600">{{ host.price }}{{ currency }}</div>
                                 <div v-else class="text-sm text-gray-600">-</div>
                             </td>
                             <td class="px-6 py-6 whitespace-nowrap text-right text-sm font-medium">
