@@ -4,18 +4,6 @@
 class Server {
 
     private $id;
-    private $name;
-    private $hostname; 
-    private $location;
-    private $tags;
-    private $ressources;
-    private $provider;
-    private $ips; 
-    private $type;
-    private $os; 
-    private $price; 
-    private $notes; 
-
 
     // Add new server 
     function addServer() {
@@ -28,7 +16,6 @@ class Server {
         else {
             $this->id = $_POST['id'];
         }
-
         // Write data to json file
         $this->writeToFile();
         return $this->id;
