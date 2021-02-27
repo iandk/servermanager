@@ -19,7 +19,8 @@ Since there is no authentification for the frontend and the API you should confi
 
 ## 3. Config
 You can change set the following parameters in the ```app/js/app.js```
-```
+
+```javascript
 title: 'My hosts',
 currency: '€',
 billingTerm: 'month',
