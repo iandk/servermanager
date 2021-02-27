@@ -80,7 +80,7 @@
                             <td class="px-6 py-8 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0">
-                                        <span v-if="pendingStatus" class="fa-stack text-blue-400 text-lg">
+                                        <span v-if="pendingStatus || disablePing" class="fa-stack text-blue-400 text-lg">
                                             <i class="fas fa-square fa-stack-2x"></i>
                                             <i class="fas fa-server fa-stack-1x fa-inverse"></i>
                                         </span>
