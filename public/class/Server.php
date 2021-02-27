@@ -28,17 +28,7 @@ class Server {
         else {
             $this->id = $_POST['id'];
         }
-        $this->name = $_POST['name'];
-        $this->hostname = $_POST['hostname'];
-        $this->location = $_POST['location'];
-        $this->tags = $_POST['tags'];
-        $this->ressources = $_POST['ressources'];
-        $this->provider = $_POST['provider'];
-        $this->ips = $_POST['ips'];
-        $this->type = $_POST['type'];
-        $this->os = $_POST['os'];
-        $this->price = $_POST['price'];
-        $this->notes = $_POST['notes'];
+
         // Write data to json file
         $this->writeToFile();
         return $this->id;
@@ -48,17 +38,17 @@ class Server {
     function writeToFile() {
         $jsonData = array(
             "id" => $this->id,
-            "name" => $this->name,
-            "hostname" => $this->hostname,
-            "location" => $this->location,   
-            "tags" => $this->tags,   
-            "ressources" => $this->ressources,   
-            "provider" => $this->provider,   
-            "ips" => $this->ips,
-            "price" => $this->price,
-            "type" => $this->type,
-            "os" => $this->os,    
-            "notes" => $this->notes,
+            "name" => $_POST['name'],
+            "hostname" => $_POST['hostname'],
+            "location" => $_POST['location'],   
+            "tags" => $_POST['tags'],   
+            "ressources" => $_POST['ressources'],   
+            "provider" => $_POST['provider'],   
+            "ips" => $_POST['ips'],
+            "price" => $_POST['price'],
+            "type" => $_POST['type'],
+            "os" => $_POST['os'],    
+            "notes" => $_POST['notes'],
             "status" => "false"
         );
         // Create new json file to store data
