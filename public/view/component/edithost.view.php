@@ -87,7 +87,7 @@
                     <div class="pt-8 pb-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">Ressources</label>
                       <div class="mt-1">
-                        <input v-model="ressources" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="1vCore, 2GB RAM, 20GB NVMe">
+                        <input v-model="ressources" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="1C/2GB/20GB-NVME">
                       </div>
                     </div>
                     <div class="py-2">

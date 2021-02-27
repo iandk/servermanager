@@ -178,7 +178,7 @@ var app = new Vue({
       }
       // Throw error if price is not numeric
       if (isNaN(this.price)) {
-        this.throwError("The price only allowes numbers!");
+        this.throwError("The price must only contain numbers");
         return;
       }
       var params = new URLSearchParams();
@@ -221,6 +221,7 @@ var app = new Vue({
     // Reset and close form
     cancelForm(flag) {
       this.clearForm();
+      this.clearErrors();
       return !flag;
     },
     // Clear form
@@ -299,6 +300,7 @@ var app = new Vue({
   },
   mounted() {
     this.getServer();
+    // Only ping if the setting is enabled
     if(!this.disablePing) {
       this.getStatus();
     }
