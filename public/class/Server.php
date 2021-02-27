@@ -21,7 +21,7 @@ class Server {
     function addServer() {
         // If the method is called with "existingID", then a existing host should get updated instead of creating a new one
         // Generate a new unique ID if there was no ID given 
-        if(!$_POST['id']) {
+        if(!isset($_POST['id'])) {
             $this->id = uniqid();
         } 
         // No ID was given, therefore update the existing host
