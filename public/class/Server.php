@@ -90,25 +90,11 @@ class Server {
         $listServer = [];
         if ($handle = opendir('data/')) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry != "." && $entry != ".." && $entry != ".gitkeep") {    
-                    // Remove .json ending
-                    $id = str_replace(".json", "", $entry);
-                    $newEntry = array(
-                        "id" => $this->getValue($id, "id"),
-                        "name" => $this->getValue($id, "name"),
-                        "hostname" => $this->getValue($id, "hostname"),
-                        "location" => $this->getValue($id, "location"),
-                        "tags" => $this->getValue($id, "tags"),
-                        "ressources" => $this->getValue($id, "ressources"),
-                        "provider" => $this->getValue($id, "provider"),
-                        "type" => $this->getValue($id, "type"),
-                        "os" => $this->getValue($id, "os"),
-                        "ips" => $this->getValue($id, "ips"),
-                        "price" => $this->getValue($id, "price"),
-                        "notes" => $this->getValue($id, "notes"),
-                    );
+                if ($entry != "." && $entry != ".." && $entry != ".gitkeep") { 
+                    // Read file   
+                    $file = json_decode(file_get_contents('data/' . $entry));
                     // Add to array
-                    array_push($listServer, $newEntry);
+                    array_push($listServer, $file);
                 }
             }
             return json_encode($listServer);
