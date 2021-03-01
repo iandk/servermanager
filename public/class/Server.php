@@ -4,41 +4,19 @@
 class Server {
 
     private $id;
-    private $name;
-    private $hostname; 
-    private $location;
-    private $tags;
-    private $ressources;
-    private $provider;
-    private $ips; 
-    private $type;
-    private $os; 
-    private $price; 
-    private $notes; 
-
 
     // Add new server 
     function addServer() {
         // If the method is called with "existingID", then a existing host should get updated instead of creating a new one
         // Generate a new unique ID if there was no ID given 
-        if(!$_POST['id']) {
+        if(!isset($_POST['id'])) {
             $this->id = uniqid();
         } 
         // No ID was given, therefore update the existing host
         else {
             $this->id = $_POST['id'];
         }
-        $this->name = $_POST['name'];
-        $this->hostname = $_POST['hostname'];
-        $this->location = $_POST['location'];
-        $this->tags = $_POST['tags'];
-        $this->ressources = $_POST['ressources'];
-        $this->provider = $_POST['provider'];
-        $this->ips = $this->storeIps($_POST['ips']);
-        $this->type = $_POST['type'];
-        $this->os = $_POST['os'];
-        $this->price = $_POST['price'];
-        $this->notes = $_POST['notes'];
+
         // Write data to json file
         $this->writeToFile();
         return $this->id;
@@ -61,17 +39,18 @@ class Server {
     function writeToFile() {
         $jsonData = array(
             "id" => $this->id,
-            "name" => $this->name,
-            "hostname" => $this->hostname,
-            "location" => $this->location,   
-            "tags" => $this->tags,   
-            "ressources" => $this->ressources,   
-            "provider" => $this->provider,   
-            "ips" => $this->ips,
-            "price" => $this->price,
-            "type" => $this->type,
-            "os" => $this->os,    
-            "notes" => $this->notes
+            "name" => $_POST['name'],
+            "hostname" => $_POST['hostname'],
+            "location" => $_POST['location'],   
+            "tags" => $_POST['tags'],   
+            "ressources" => $_POST['ressources'],   
+            "provider" => $_POST['provider'],   
+            "ips" => $this->storeIps($_POST['ips']),
+            "price" => $_POST['price'],
+            "type" => $_POST['type'],
+            "os" => $_POST['os'],    
+            "notes" => $_POST['notes'],
+            "status" => "false"
         );
         // Create new json file to store data
         $file = fopen("data/" . $this->id . ".json", "w");
@@ -102,25 +81,11 @@ class Server {
         $listServer = [];
         if ($handle = opendir('data/')) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry != "." && $entry != ".." && $entry != ".gitkeep") {    
-                    // Remove .json ending
-                    $id = str_replace(".json", "", $entry);
-                    $newEntry = array(
-                        "id" => $this->getValue($id, "id"),
-                        "name" => $this->getValue($id, "name"),
-                        "hostname" => $this->getValue($id, "hostname"),
-                        "location" => $this->getValue($id, "location"),
-                        "tags" => $this->getValue($id, "tags"),
-                        "ressources" => $this->getValue($id, "ressources"),
-                        "provider" => $this->getValue($id, "provider"),
-                        "type" => $this->getValue($id, "type"),
-                        "os" => $this->getValue($id, "os"),
-                        "ips" => $this->getValue($id, "ips"),
-                        "price" => $this->getValue($id, "price"),
-                        "notes" => $this->getValue($id, "notes"),
-                    );
+                if ($entry != "." && $entry != ".." && $entry != ".gitkeep") { 
+                    // Read file   
+                    $file = json_decode(file_get_contents('data/' . $entry));
                     // Add to array
-                    array_push($listServer, $newEntry);
+                    array_push($listServer, $file);
                 }
             }
             closedir($handle);

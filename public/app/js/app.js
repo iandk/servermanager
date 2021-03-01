@@ -2,13 +2,18 @@ var app = new Vue({
   el: '#app',
   data: {
     // Custom config
+    // App title
+    title: 'My hosts',
     currency: '€',
     billingTerm: 'month',
     // Set this to true if you don't want to see the pricing input and table view
     // This is useful when used internally and you don't need to specifiy the price for hosts
     disablePricing: false,
-    // Title of the application
-    title: 'My hosts',
+    //This settings disables the ping check in the background, set this to true 
+    // if your environment doesn't support php exec or you don't need this this function
+    disablePing: false,
+    //
+    //
     // Form values
     hosts: [],
     status: null,
@@ -173,7 +178,7 @@ var app = new Vue({
       }
       // Throw error if price is not numeric
       if (isNaN(this.price)) {
-        this.throwError("The price only allowes numbers!");
+        this.throwError("The price must only contain numbers");
         return;
       }
       var params = new URLSearchParams();
@@ -216,6 +221,7 @@ var app = new Vue({
     // Reset and close form
     cancelForm(flag) {
       this.clearForm();
+      this.clearErrors();
       return !flag;
     },
     // Clear form
@@ -294,9 +300,14 @@ var app = new Vue({
   },
   mounted() {
     this.getServer();
-    this.getStatus();
+    // Only ping if the setting is enabled
+    if(!this.disablePing) {
+      this.getStatus();
+    }
     this.interval = setInterval(() => this.getServer(), 1000);
-    this.interval = setInterval(() => this.getStatus(), 10000);
+    if(!this.disablePing) {
+      this.interval = setInterval(() => this.getStatus(), 10000);
+    }
     document.title = this.title;
   }
 })

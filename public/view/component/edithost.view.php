@@ -14,7 +14,7 @@
                     Edit server
                   </h2>
                   <div class="ml-3 h-7 flex items-center">
-                    <button @click="editHostOpen = cancelForm(editHostOpen)" class="bg-blue-600 rounded-md text-white hover:text-blue-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button @click="editHostOpen = cancelForm(editHostOpen)" class="bg-blue-600 rounded-md text-white hover:text-blue-200 focus:outline-none">
                       <span class="sr-only">Close panel</span>
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -87,7 +87,7 @@
                     <div class="pt-8 pb-2">
                       <label class="block text-sm font-medium text-gray-600 text-left">Ressources</label>
                       <div class="mt-1">
-                        <input v-model="ressources" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="1vCore, 2GB RAM, 20GB NVMe">
+                        <input v-model="ressources" class="outline-none shadow-sm block w-full sm:text-sm border-2 border-gray-200 py-2 px-3 rounded-md" placeholder="1C/2GB/20GB-NVME">
                       </div>
                     </div>
                     <div class="py-2">
@@ -141,10 +141,10 @@
               </div>
             </div>
             <div class="flex-shrink-0 px-4 py-4 flex justify-end">
-              <button @click="editHostOpen = cancelForm(editHostOpen)" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <button @click="editHostOpen = cancelForm(editHostOpen)" type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
                 Cancel
               </button>
-              <button @click="addServer(id)" type="submit" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <button @click="addServer(id)" type="submit" class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
                 Save
               </button>
             </div>
