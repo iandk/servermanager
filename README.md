@@ -37,4 +37,4 @@ disablePing: false,
 
 
 ## 4. Demo
-![](https://i.imgur.com/mRdAkg5.png)
+![](https://i.imgur.com/JZaBOjh.png)
