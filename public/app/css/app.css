@@ -3,3 +3,9 @@ html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
   html { font-family: 'Inter var', sans-serif; }
 }
+
+
+
+tr:nth-child(even) {
+  background: #F3F4F6;
+}
