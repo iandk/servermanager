@@ -118,7 +118,7 @@ class Server {
 
     function getStatus() {
         $ip = $this->getValue($_POST['id'], "hostname");
-        exec("/usr/bin/ping -W 2 -c 3 $ip", $output, $status);
+        exec("`which ping` -W 2 -c 3 $ip", $output, $status);
         if ($status == 0) {
             return true;
         }
