@@ -4,6 +4,10 @@ html { font-family: 'Inter', sans-serif; }
   html { font-family: 'Inter var', sans-serif; }
 }
 
+tr:nth-child(even) {
+  background: #F3F4F6;
+}
+
 .tooltip {
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));

@@ -1,5 +1,8 @@
 # Servermanager
 
+A simple file-based webapp to keep track of your hosting environment. 
+It comes with an integrated search and uptime function. 
+
 ## 1. Requirements
 - Apache 2.4 with mod_rewrite enabled
 - PHP 7.4+ with php exec enabled if you want to use the Ping function
@@ -27,11 +30,11 @@ billingTerm: 'month',
 // Set this to true if you don't want to see the pricing input and table view
 // This is useful when used internally and you don't need to specifiy the price for hosts
 disablePricing: false,
-//This settings disables the ping check in the background, set this to true 
+// This settings disables the ping check in the background, set this to true 
 // if your environment doesn't support php exec or you don't need this this function
 disablePing: false,
 ```
 
 
 ## 4. Demo
-![](https://i.imgur.com/mRdAkg5.png)
+![](https://i.imgur.com/JZaBOjh.png)

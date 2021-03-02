@@ -39,44 +39,44 @@
                     </div>
                 </div>
             </div>
-            <div v-else class="shadow overflow-hidden border-b border-gray-200 rounded-lg">
-                <table class="table-auto min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-200">
+            <div v-else class="shadow overflow-hidden rounded-lg">
+                <table class="table-auto min-w-full">
+                    <thead class="bg-gray-700">
                         <tr>
-                            <th @click="sort('name')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th @click="sort('name')" scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Name<span v-if="currentSort === 'name'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Tags
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Resources
                             </th>
-                            <th @click="sort('location')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th @click="sort('location')" scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Location<span v-if="currentSort === 'location'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
-                            <th @click="sort('provider')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th @click="sort('provider')" scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Provider<span v-if="currentSort === 'provider'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 IPs
                             </th>
-                            <th @click="sort('type')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th @click="sort('type')" scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Type<span v-if="currentSort === 'type'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
-                            <th @click="sort('os')" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th @click="sort('os')" scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 OS<span v-if="currentSort === 'os'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
-                            <th @click="sort('price')" v-if="!disablePricing" scope="col" class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <th @click="sort('price')" v-if="!disablePricing" scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Price per {{ billingTerm }}<span v-if="currentSort === 'price'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
-                            <th scope="col" class="relative px-6 py-3">
+                            <th scope="col" class="relative px-6 py-5">
                                 <span class="sr-only">Edit</span>
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr v-for="host in filteredHosts" class="hover:bg-gray-50">
+                    <tbody class="divide-none">
+                        <tr v-for="host in filteredHosts" class="bg-white rounded divide-transparent">
                             <td class="px-6 py-8 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0">
