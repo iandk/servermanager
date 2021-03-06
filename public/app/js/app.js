@@ -12,6 +12,8 @@ var app = new Vue({
     //This settings disables the ping check in the background, set this to true 
     // if your environment doesn't support php exec or you don't need this this function
     disablePing: false,
+    //This setting disables fetching and displaying asn information for IP addresses
+    disableAsn: true,
     //
     //
     // Form values
@@ -137,6 +139,19 @@ var app = new Vue({
         return value;
       }
     },
+    // Parse `ips` value and make sure it's an object
+    displayIPs(ips) {
+      if (Array.isArray(ips)) {
+        return ips;
+      }
+      else {
+        let ip_array = [];
+        ips.split(',').forEach(ip => {
+          ip_array.push({'ip': ip.trim()});
+        })
+        return ip_array;
+      }
+    },
     // Edit an existing server
     // - Open UI Sidebar
     // - Set response to pending while waiting
@@ -160,7 +175,7 @@ var app = new Vue({
           this.provider = this.checkForValue(this.editHost.provider),
           this.type = this.checkForValue(this.editHost.type),
           this.os = this.checkForValue(this.editHost.os),
-          this.ips = this.checkForValue(this.editHost.ips.map(x => x.ip).join(', ')),
+          this.ips = this.checkForValue(this.displayIPs(this.editHost.ips).map(x => x.ip).join(', ')),
           this.price = this.checkForValue(this.editHost.price),
           this.notes = this.checkForValue(this.editHost.notes),
           this.pendingEditResponse = false
@@ -197,6 +212,7 @@ var app = new Vue({
       params.append('ips', this.ips);
       params.append('price', this.price);
       params.append('notes', this.notes);
+      params.append('disable_asn', this.disableAsn);
       axios.post('/api/addserver', params)
         .then(response => {
           this.getServer();

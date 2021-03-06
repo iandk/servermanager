@@ -4,6 +4,7 @@
 class Server {
 
     private $id;
+    private $ips;
 
     // Add new server 
     function addServer() {
@@ -15,6 +16,13 @@ class Server {
         // No ID was given, therefore update the existing host
         else {
             $this->id = $_POST['id'];
+        }
+        // Fetch ASN information if enabled
+        if($_POST['disable_asn'] == "false") {
+            $this->ips = $this->storeIps($_POST['ips']);
+        }
+        else {
+            $this->ips = $_POST['ips'];
         }
 
         // Write data to json file
@@ -45,7 +53,7 @@ class Server {
             "tags" => $_POST['tags'],   
             "ressources" => $_POST['ressources'],   
             "provider" => $_POST['provider'],   
-            "ips" => $this->storeIps($_POST['ips']),
+            "ips" => $this->ips,
             "price" => $_POST['price'],
             "type" => $_POST['type'],
             "os" => $_POST['os'],    
