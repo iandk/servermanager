@@ -125,7 +125,9 @@
                             </td>
 
                             <td class="px-6 py-6">
-                                <div class="text-sm text-gray-600">{{ orDefault(host.ips) }}</div>
+                                <div v-for="ip in displayIPs(host.ips)" class="has-tooltip text-sm text-gray-600">
+                                    <span v-if="!disableAsn && ip.asn" class='tooltip'>{{ ip.asn }}</span>{{ ip.ip }}
+                                </div>
                             </td>
                             <td class="px-6 py-6">
                                 <div class="text-sm text-gray-600">{{ orDefault(host.type) }}</div>
