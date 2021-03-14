@@ -68,7 +68,7 @@
                                 OS<span v-if="currentSort === 'os'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th @click="sort('price')" v-if="!disablePricing" scope="col" class="px-6 py-5 text-left text-xs font-semibold text-white uppercase tracking-wider">
-                                Price per {{ billingTerm }}<span v-if="currentSort === 'price'">&nbsp;{{ displaySortDirection }}</span>
+                                {{ currency }}/{{ billingTerm }}<span v-if="currentSort === 'price'">&nbsp;{{ displaySortDirection }}</span>
                             </th>
                             <th scope="col" class="relative px-6 py-5">
                                 <span class="sr-only">Edit</span>
