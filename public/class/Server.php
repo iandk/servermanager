@@ -89,7 +89,7 @@ class Server {
         $listServer = [];
         if ($handle = opendir('data/')) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry != "." && $entry != ".." && $entry != ".gitkeep") { 
+                if ($entry != "." && $entry != ".." && $entry != ".gitkeep"&& $entry != ".firstsetup") { 
                     // Read file   
                     $file = json_decode(file_get_contents('data/' . $entry));
                     // Add to array
@@ -146,6 +146,24 @@ class Server {
         }
         else {
             return false;
+        }
+    }
+
+    function isFirstSetup() {
+        $filename = "data/.firstsetup";
+        if (!file_exists($filename)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function completeSetup() {
+        // Create .firstsetup file
+        $filename = "data/.firstsetup";
+        if (!file_exists($filename)) {
+            $contents = 'Just a dummy file ';
+            file_put_contents($filename, $contents);
         }
     }
 

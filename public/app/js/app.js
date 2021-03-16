@@ -37,6 +37,7 @@ var app = new Vue({
     addHostOpen: false,
     editHostOpen: false,
     settingsOpen: false,
+    showHelp: null,
     // ID of the account to be deleted
     deleteHostID: null,
     // Search query 
@@ -263,8 +264,18 @@ var app = new Vue({
       else {
         this.searchQuery = tag;
       }
-      
-        
+    },
+    isFirstSetup() {
+      axios
+        .get('/api/isfirstsetup')
+        .then(response => (
+          this.showHelp = response.data
+        ))
+    },
+    completeSetup() {
+      this.showHelp = !this.showHelp;
+      axios
+        .post('/api/completesetup')
     }
   },
   computed: {
@@ -327,6 +338,7 @@ var app = new Vue({
     }
   },
   mounted() {
+    this.isFirstSetup();
     this.getServer();
     // Only ping if the setting is enabled
     if(!this.disablePing) {

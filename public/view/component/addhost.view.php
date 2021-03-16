@@ -2,6 +2,7 @@
   <div v-if="addHostOpen" @keydown.esc="addHostOpen = cancelForm(addHostOpen)" tabindex="-1" class="fixed z-50 inset-0 overflow-hidden">
     <div class="fixed inset-0 transition-opacity" aria-hidden="true">
       <div class="absolute inset-0 bg-gray-900 opacity-95"></div>
+      <div class="absolute inset-0 bg-gray-900 opacity-40"></div>
     </div>
     <div class="absolute inset-0 overflow-hidden">
       <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
