@@ -8,13 +8,6 @@ class Server {
 
     // Add new server 
     function addServer() {
-        // Create .firstsetup file
-        $filename = "data/.firstsetup";
-        if (!file_exists($filename)) {
-            $contents = 'Just a dummy file ';      
-            file_put_contents($filename, $contents);     
-        }
-
         // If the method is called with "existingID", then a existing host should get updated instead of creating a new one
         // Generate a new unique ID if there was no ID given 
         if(!isset($_POST['id'])) {
@@ -162,6 +155,15 @@ class Server {
             return true;
         } else {
             return false;
+        }
+    }
+
+    function completeSetup() {
+        // Create .firstsetup file
+        $filename = "data/.firstsetup";
+        if (!file_exists($filename)) {
+            $contents = 'Just a dummy file ';
+            file_put_contents($filename, $contents);
         }
     }
 

@@ -271,6 +271,11 @@ var app = new Vue({
         .then(response => (
           this.showHelp = response.data
         ))
+    },
+    completeSetup() {
+      this.showHelp = !this.showHelp;
+      axios
+        .post('/api/completesetup')
     }
   },
   computed: {

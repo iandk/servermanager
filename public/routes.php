@@ -35,3 +35,6 @@ $router->post('api/getstatus', 'controller/api/getstatus.php');
 
 $router->get('api/isfirstsetup', 'controller/api/isfirstsetup.php');
 $router->post('api/isfirstsetup', 'controller/api/isfirstsetup.php');
+
+$router->get('api/completesetup', 'controller/api/completesetup.php');
+$router->post('api/completesetup', 'controller/api/completesetup.php');
