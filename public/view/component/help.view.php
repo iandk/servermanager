@@ -23,7 +23,7 @@
                         </h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
-                                Are you sure you want to remove the server? All of your data will be permanently removed. This action cannot be undone.
+                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
                             </p>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         </h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
-                                Are you sure you want to remove the server? All of your data will be permanently removed. This action cannot be undone.
+                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
                             </p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         </h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
-                                Are you sure you want to remove the server? All of your data will be permanently removed. This action cannot be undone.
+                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
                             </p>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                         </h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
-                                Are you sure you want to remove the server? All of your data will be permanently removed. This action cannot be undone.
+                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
                             </p>
                         </div>
                     </div>
