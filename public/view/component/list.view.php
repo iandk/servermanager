@@ -9,6 +9,11 @@
     </div>
     <div>
         <input required v-model="searchQuery" type="text" class="outline-none shadow-sm w-32 sm:text-sm h-10 px-3 rounded-md mr-1" placeholder="Search">
+        <div v-if="searchQuery" class="absolute top-20 mt-4 ml-24 pl-2">
+            <button @click="searchQuery = null">
+                <i class="fas fa-times-circle text-gray-300"></i>
+            </button>
+        </div>
         <button @click="addHostOpen = !addHostOpen" class="bg-blue-500 hover:bg-blue-400 transition duration-200 ease-in-out rounded font-semibold text-white px-3 h-10 inline-block focus:outline-none">
             <i class="fas fa-plus-circle opacity-50"></i>
             Add server
