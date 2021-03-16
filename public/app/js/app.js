@@ -253,6 +253,18 @@ var app = new Vue({
       this.ips = "";
       this.price = "";
       this.notes = "";
+    },
+    searchTag(tag) {
+      // Tag is already set, clear the input field
+      if(this.searchQuery == tag) {
+        this.searchQuery = null;
+      }
+      // Set searchQuery to the tag value
+      else {
+        this.searchQuery = tag;
+      }
+      
+        
     }
   },
   computed: {

@@ -110,9 +110,9 @@
                             </td>
                             <td class="px-6 py-6 ">
                                 <div class="text-sm text-gray-600">
-                                    <div v-for="tag in filterTags(host.tags)" class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-indigo-100 text-indigo-800 m-1">
+                                    <button @click="searchTag(tag)" v-for="tag in filterTags(host.tags)" class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-indigo-100 text-indigo-800 m-1">
                                         {{ tag }}
-                                    </div>
+                                    </button @click="searchQuery = tag">
                                     <div v-if="host.tags === 'undefined' || host.tags === 'null' || !host.tags" class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border border-dashed border-gray-300 text-gray-300 m-1">
                                         none
                                     </div>
