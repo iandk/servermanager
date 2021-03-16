@@ -3,6 +3,7 @@
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 transition-opacity" aria-hidden="true">
                 <div class="absolute inset-0 bg-gray-900 opacity-95"></div>
+                <div class="absolute inset-0 bg-gray-900 opacity-40"></div>
             </div>
             <!-- This element is to trick the browser into centering the modal contents. -->
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -16,9 +17,9 @@
                         </svg>
                     </button>
                 </div>
-                <div class="sm:flex sm:items-start pt-2 pb-10">
+                <div class="sm:flex sm:items-start pt-2 pb-4 border-b border-gray-100">
                     <div class="mt-4 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-2xl leading-6 font-bold tracking-wide text-gray-800" id="modal-headline">
+                        <h3 class="text-2xl leading-6 font-bold tracking-wide text-gray-700" id="modal-headline">
                             Getting started
                         </h3>
                         <div class="mt-2">
@@ -29,7 +30,7 @@
                     </div>
                 </div>
                 <!-- SINGLE -->
-                <div class="sm:flex sm:items-start py-4">
+                <div class="sm:flex sm:items-start pt-8 py-4">
                     <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
                         <!-- Heroicon name: exclamation -->
                         <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
