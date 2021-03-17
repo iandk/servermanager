@@ -1,7 +1,12 @@
 var app = new Vue({
   el: '#app',
   data: {
+    //
+    //
+    //
     // Custom config
+    //
+    //
     // App title
     title: 'My hosts',
     currency: '€',
@@ -14,6 +19,12 @@ var app = new Vue({
     disablePing: false,
     //This setting disables fetching and displaying asn information for IP addresses
     disableAsn: true,
+    //
+    //
+    //
+    //
+    //
+    //
     //
     //
     // Form values
@@ -31,6 +42,7 @@ var app = new Vue({
     type: null,
     notes: null,
     os: null,
+    bulkAdd: false,
     // State of UI objects
     sidebarOpen: false,
     modalOpen: false,
@@ -217,9 +229,12 @@ var app = new Vue({
       axios.post('/api/addserver', params)
         .then(response => {
           this.getServer();
-          this.addHostOpen = false;
-          this.editHostOpen = false;
-          this.clearForm();
+
+          if(!this.bulkAdd) {
+            this.addHostOpen = false;
+            this.editHostOpen = false;
+            this.clearForm();
+          }
           this.clearErrors();
         })
         .catch(function (error) {
