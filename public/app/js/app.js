@@ -361,7 +361,7 @@ var app = new Vue({
     }
     this.interval = setInterval(() => this.getServer(), 5000);
     if(!this.disablePing) {
-      this.interval = setInterval(() => this.getStatus(), 10000);
+      this.interval = setInterval(() => this.getStatus(), 5000);
     }
     document.title = this.title;
   }
