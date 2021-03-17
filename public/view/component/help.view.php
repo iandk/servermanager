@@ -31,67 +31,6 @@
                 </div>
                 <!-- SINGLE -->
                 <div class="sm:flex sm:items-start pt-8 py-4">
-                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <!-- Heroicon name: exclamation -->
-                        <svg class="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-4 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-md leading-6 font-semibold text-gray-700" id="modal-headline">
-                            Adding hosts
-                        </h3>
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500">
-                                You can add a new host by clicking the button on the top right corner.
-                                Only the description and hostname are mandatory.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- END -->
-                <!-- SINGLE -->
-                <div class="sm:flex sm:items-start py-4">
-                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <!-- Heroicon name: exclamation -->
-                        <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-4 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-md leading-6 font-semibold text-gray-700" id="modal-headline">
-                            Editing hosts
-                        </h3>
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500">
-                                Click on the pencil on the right side of the table if you want to edit an existing host.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- END -->
-                <!-- SINGLE -->
-                <div class="sm:flex sm:items-start py-4">
-                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <!-- Heroicon name: exclamation -->
-                        <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="mt-4 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                        <h3 class="text-md leading-6 font-semibold text-gray-700" id="modal-headline">
-                            Deleting hosts
-                        </h3>
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500">
-                                Hosts can be deleted by clicking on the trashcan symbol.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- END -->
-                <!-- SINGLE -->
-                <div class="sm:flex sm:items-start py-4">
                     <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
                         <!-- Heroicon name: exclamation -->
                         <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +63,30 @@
                         </h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500">
-                                Use tags to group hosts, by clicking on the tag you can filter for it.
+                                Use tags to group hosts, you can also filter for the tag by clicking on it.
+                                Click again to remove the filter.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- SINGLE -->
+                <div class="sm:flex sm:items-start py-4">
+                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-pink-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <!-- Heroicon name: exclamation -->
+                        <svg class="w-6 h-6 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="mt-4 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <h3 class="text-md leading-6 font-semibold text-gray-700" id="modal-headline">
+                            Monitoring
+                        </h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500">
+                                The application will perform a ping check in the background. 
+                                If the host is up, the icon on the left will turn green, or red, if the host is down. <br />
+                                Please keep in mind, that the hostname will be used for a ping check, not the IP(s)!
                             </p>
                         </div>
                     </div>
