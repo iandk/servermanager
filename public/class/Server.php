@@ -57,8 +57,7 @@ class Server {
             "price" => $_POST['price'],
             "type" => $_POST['type'],
             "os" => $_POST['os'],    
-            "notes" => $_POST['notes'],
-            "status" => "false"
+            "notes" => $_POST['notes']
         );
         // Create new json file to store data
         $file = fopen("data/" . $this->id . ".json", "w");
