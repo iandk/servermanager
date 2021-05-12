@@ -21,7 +21,7 @@
     "autoprefixer": "^10.1.0",
     "axios": "^0.21.1",
     "live-server": "^1.2.1",
-    "postcss": "^8.2.2",
+    "postcss": ">=8.2.10",
     "tailwindcss": "^2.0.2",
     "vue": "^2.6.11"
   }
